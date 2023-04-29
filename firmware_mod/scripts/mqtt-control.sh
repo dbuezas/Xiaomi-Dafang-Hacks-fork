@@ -439,9 +439,9 @@ done
 	;;
 
 	"${TOPIC}/hwvolume/set"*)
-		VOLUME=$(echo "$line" | awk '{print $2}')
-		hwvolume "$VOLUME"
-	  /system/sdcard/bin/mosquitto_pub.bin -h "$HOST" -p "$PORT" -u "$USER" -P "$PASS" -t "${TOPIC}"/hwvolume ${MOSQUITTOPUBOPTS} ${MOSQUITTOOPTS} -m "$(hwvolume status)"
+		volume=$(echo "$line" | awk '{print $2}')
+		hwvolume "$volume"
+	  /system/sdcard/bin/mosquitto_pub.bin -h "$HOST" -p "$PORT" -u "$USER" -P "$PASS" -t "${TOPIC}"/hwvolume ${MOSQUITTOPUBOPTS} ${MOSQUITTOOPTS} -m "${volume}"
 	;;
 
 	"${TOPIC}/swvolume")
@@ -449,9 +449,9 @@ done
 	;;
 
 	"${TOPIC}/swvolume/set"*)
-		VOLUME=$(echo "$line" | awk '{print $2}')
-		swvolume "$VOLUME"
-	  /system/sdcard/bin/mosquitto_pub.bin -h "$HOST" -p "$PORT" -u "$USER" -P "$PASS" -t "${TOPIC}"/swvolume ${MOSQUITTOPUBOPTS} ${MOSQUITTOOPTS} -m "$(swvolume status)"
+		volume=$(echo "$line" | awk '{print $2}')
+		swvolume "$volume"
+	  /system/sdcard/bin/mosquitto_pub.bin -h "$HOST" -p "$PORT" -u "$USER" -P "$PASS" -t "${TOPIC}"/swvolume ${MOSQUITTOPUBOPTS} ${MOSQUITTOOPTS} -m "${volume}"
 	;;
 
 	"${TOPIC}/set "*)
